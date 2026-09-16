@@ -1,0 +1,51 @@
+[project]
+name = "pyearthmc"
+version = "0.4.0"
+description = "A complete and type-safe Python client for EMC (EarthMC Minecraft Server)"
+license = "MIT"
+readme = "README.md"
+authors = [
+    { name = "RafaCabra" },
+]
+requires-python = ">=3.14"
+dependencies = [
+    "httpx>=0.28.1",
+    "pydantic>=2.13.5",
+    "rich>=15.0.0",
+]
+
+[project.urls]
+Repository = "https://github.com/Rafacabra/pyearthmc"
+
+
+[dependency-groups]
+dev = [
+    "mypy>=1.16",
+    "pyright>=1.1.0",
+    "pytest>=8.0",
+    "pytest-asyncio>=1.0",
+    "pyfiglet>=1.0.4",
+    "ruff>=0.11",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+asyncio_mode = "auto"
+
+
+[tool.mypy]
+python_version = "3.14"
+files = ["src"]
+ignore_missing_imports = true
+
+[tool.ruff]
+target-version = "py314"
+line-length = 160
+src = ["src", "tests", "examples"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP"]
+
+[build-system]
+requires = ["uv_build>=0.12.7,<0.13.0"]
+build-backend = "uv_build"
